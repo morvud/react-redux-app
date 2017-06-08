@@ -2,6 +2,10 @@
   "name": "react-redux-app",
   "version": "1.0.0",
   "description": "",
+  "scripts": {
+    "prestart": "babel-node tools/startMessage.js",
+    "start": "babel-node tools/srcServer.js"
+  },
   "author": "Morvud",
   "license": "MIT",
   "dependencies": {
