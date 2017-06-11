@@ -1,7 +1,52 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
+import {connect} from 'react-redux';
 
 class CoursePage extends Component {
-  
+
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+        course: { title: "" }
+    };
+
+    this.onTitleChange = this.onTitleChange.bind(this);
+    this.onClickSave = this.onClickSave.bind(this);
+  }
+
+  onTitleChange(e){
+      const course = this.state.course;
+      course.title = e.target.value;
+      this.setState({course: course});
+  }
+
+  onClickSave() {
+    alert(`Saving ${this.state.course.title}`);
+  }
+
+  render() {
+    return (
+        <div>
+            <h1>Courses</h1>
+            <h2>Add course</h2>
+            <input
+                type="text"
+                onChange={this.onTitleChange}
+                value={this.state.course.title} />
+            <input
+                type="submit"
+                value="save"
+                onClick={this.onClickSave} />
+            
+        </div>
+    );
+  }
 }
 
-export default CoursePage;
+function mapStateToProps(state, ownProps) {
+    return {
+        courses: state.courses
+    };
+}
+
+export default connect(mapStateToProps)(CoursePage);
