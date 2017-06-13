@@ -1,5 +1,6 @@
 import React, {PropTypes,Component} from 'react';
 import Header from './common/Header';
+import {connect} from 'react-redux';
 
 class App extends Component {
     render() {
